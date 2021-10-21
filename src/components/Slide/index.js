@@ -29,9 +29,10 @@ const SlideNextIcon = styled.div`
 `;
 
 const Wrapper = styled.section`
-  margin: 150px auto 0 auto;
-  scroll-margin-top: 150px;
-  height: calc(100vh - 150px) !important;
+  margin: 125px auto 40px auto;
+  scroll-margin-top: 125px;
+  scroll-margin-bottom: 40px;
+  height: calc(100vh - 165px) !important;
   scroll-snap-align: start;
   margin-left: 100px;
   margin-right: 100px;

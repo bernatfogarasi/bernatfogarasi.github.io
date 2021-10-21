@@ -1,7 +1,10 @@
 import { Canvas } from "@react-three/fiber";
 import styled from "styled-components";
 import Slide from "../Slide";
+import NetworkExample5 from "../Visualization/NetworkExample5";
 // import squares from "./squares.jpg";
+import Network from "../Visualization/Network";
+// import Network2 from "../Visualization/Network2";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -83,8 +86,16 @@ const Content = () => {
         <Greetings>Hi, my name is</Greetings>
         <Name>Bernat Fogarasi.</Name>
         <Motto>
-          I build things for the <span style={{ color: "#ff6500" }}>web.</span>
+          I build things for the{" "}
+          <span
+            style={{ color: "#ff6500", "-webkit-text-stroke": "1px black" }}
+          >
+            web.
+          </span>
         </Motto>
+      </Slide>
+      <Slide>
+        <Network />
       </Slide>
       <Slide>
         <Description>
