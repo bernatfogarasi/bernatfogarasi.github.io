@@ -38,7 +38,7 @@ const Wrapper = styled.span`
 `;
 
 const highlightStyle = css`
-  color: #ff781e;
+  color: #ff6500;
 `;
 
 const Button = ({ children, number, highlight }) => {

@@ -1,4 +1,8 @@
 ignore*/
+.env
+
+# assets
+*.xcf
 
 # dependencies
 /node_modules

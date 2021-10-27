@@ -1,27 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import * as d3 from "d3";
-import api from "./../../../assets/api-t-b.png";
+import api from "./../../../assets/api-m-g.png";
 import bootstrap from "./../../../assets/bootstrap-t-text2.png";
 import d3js from "./../../../assets/d3-t-c.png";
 import materialui from "./../../../assets/materialui-t-c.png";
+import mongodb from "./../../../assets/mongodb-t-c.png";
 import moviepy from "./../../../assets/moviepy-f.jpeg";
+import nltk from "./../../../assets/nltk-c.png";
 import opencv from "./../../../assets/opencv-t-c.png";
 import pandas from "./../../../assets/pandas-c.png";
 import reactjs from "./../../../assets/react-b.jpg";
 import threejs from "./../../../assets/threejs-t-c.png";
 import selenium from "./../../../assets/selenium-t-c.png";
-import sass from "./../../../assets/sass-t-c3.png";
+import sass from "./../../../assets/sass-t-c.png";
 import tailwindcss from "./../../../assets/tailwindcss-t-c.png";
 import ffmpeg from "./../../../assets/ffmpeg-t-c.png";
 import django from "./../../../assets/django-t-c2.png";
 import cpp from "./../../../assets/cpp-t-f.png";
 import javascript from "./../../../assets/javascript-c.png";
-import python from "./../../../assets/python-t-c.png";
+import python from "./../../../assets/python-t-b.png";
 import html from "./../../../assets/html-t-text.png";
 import css from "./../../../assets/css-t-text.png";
-import nltk from "./../../../assets/nltk-c.png";
-import mongodb from "./../../../assets/mongodb-t-c.png";
 
 const nodeGroups = {
   projects: [
@@ -129,7 +129,7 @@ const createNodes = (nodeGroups) => {
       })
     )
     .flat(1);
-  console.log(nodes);
+  // console.log(nodes);
   return nodes;
 };
 
@@ -141,7 +141,7 @@ const createLinks = (linkGroups) => {
       })
     )
     .flat(1);
-  console.log(links);
+  // console.log(links);
   return links;
 };
 
@@ -237,8 +237,8 @@ const Network = () => {
       .attr("width", "50")
       .attr("height", "50")
       .style("transform", "translate(-25px, 0px)")
-      .attr("xlink:href", (d) => d.icon)
-      .style("filter", "grayscale(100%)");
+      .attr("xlink:href", (d) => d.icon);
+    // .style("filter", "grayscale(100%)");
 
     // const linkLine = svg
     //   .selectAll("path")
@@ -249,10 +249,10 @@ const Network = () => {
     const linkLine = svg
       .selectAll("path")
       .style("transform", "translate(0, 25px)")
-      .attr("stroke", "white")
+      .attr("stroke", "lightgrey")
       .attr("stroke-width", "4")
       .attr("id", (d) => {
-        console.log(d);
+        // console.log(d);
         return d.target.id;
       });
     // .attr("stroke-dasharray", "5,5");

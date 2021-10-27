@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   width: calc(100% - 80px);
   position: fixed;
   padding: 20px 40px;
-  background: black;
-  color: white;
+  background: white;
+  color: black;
 `;
 
 const Navigation = () => {
