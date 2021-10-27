@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 
-const Number = styled.span``;
+// const Number = styled.span``;
 
 const Text = styled.span``;
 

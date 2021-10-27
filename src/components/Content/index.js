@@ -1,8 +1,15 @@
-import { Canvas } from "@react-three/fiber";
 import styled from "styled-components";
-import Slide from "../Slide";
-import Network from "../Visualization/Network";
+import { useEffect } from "react";
 import ContactForm from "./ContactForm";
+import Network from "../Network";
+import ProjectScene from "../ProjectScene";
+import Slide from "../Slide";
+import SlideContent from "../SlideContent";
+import SlideTitle from "../SlideTitle";
+import resume from "./../../assets/resume.png";
+// import "animate.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -10,7 +17,7 @@ const Wrapper = styled.div`
   background: white;
 `;
 
-const Greetings = styled.span`
+const Greetings = styled.div`
   font-family: SFMono;
   color: black;
 `;
@@ -37,7 +44,6 @@ const Motto = styled.div`
   letter-spacing: -0.03em;
   font-size: 55pt;
   color: #6d6d6d;
-  /* line-height: 0.8em; */
   margin-left: -5px;
 `;
 
@@ -61,98 +67,102 @@ const CategoryLine = styled.hr`
   margin-right: 30px;
 `;
 
-const Title = styled.div`
-  font-family: CalibreSemibold;
-  font-size: 40px;
-`;
-
 const Description = styled.div`
   font-family: Calibre;
   font-size: 20px;
   text-align: justify;
 `;
 
+// const ProjectSceneLeft = styled(ProjectScene)``;
+
+// const ProjectSceneRight = styled(ProjectScene)``;
+
+// const Resume = styled.iframe`
+//   width: 100%;
+//   height: 100%;
+//   border-radius: 30px;
+// `;
+
+const Resume = styled.img`
+  height: 100%;
+  border: 1px solid;
+  cursor: pointer;
+  :hover {
+  }
+`;
+
 const Content = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 2000,
+    });
+  }, []);
   return (
     <Wrapper>
       <Category>
         <CategoryLine />
         Projects
       </Category>
-
       <Slide>
-        <Greetings>Hi, my name is</Greetings>
-        <Name>Bernat Fogarasi.</Name>
-        <Motto>
-          I build things for the{" "}
-          <span
-            style={{ color: "#ff6500", "-webkit-text-stroke": "0px black" }}
+        <SlideContent>
+          <Greetings
+            data-aos="zoom-in-right"
+            data-aos-delay="1000"
+            data-aos-duration="200"
           >
-            web.
-          </span>
-        </Motto>
+            Hi, my name is
+          </Greetings>
+          <Name
+            data-aos="zoom-in-right"
+            data-aos-delay="1200"
+            data-aos-duration="200"
+          >
+            Bernat Fogarasi.
+          </Name>
+          <Motto
+            data-aos="zoom-in-right"
+            data-aos-delay="1300"
+            data-aos-duration="200"
+          >
+            I build things for the{" "}
+            <span style={{ color: "#ff6500", WebkitTextStroke: "0px black" }}>
+              web.
+            </span>
+          </Motto>
+        </SlideContent>
       </Slide>
       <Slide>
-        <Network />
+        <SlideTitle>Network of skills</SlideTitle>
+        <SlideContent>
+          <Network />
+        </SlideContent>
       </Slide>
       <Slide>
-        <Description>
-          <Title>AlgoVisualizer</Title>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-          {/* <iframe
-            style={{ position: "absolute" }}
-            src="https://brittanychiang.com/"
-            frameborder="0"
-            width={300}
-            height={400}
-          ></iframe> */}
-        </Description>
+        <ProjectScene src="https://bernatfogarasi.github.io" />
+        <SlideTitle>AlgoVisualizer</SlideTitle>
+        <SlideContent>
+          <Description>
+            An interesting way to study sorting and pathfinding algorithms.
+          </Description>
+        </SlideContent>
       </Slide>
       <Slide>
-        <Title>Resume</Title>
-        <Description>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-        </Description>
+        <SlideTitle>Resume</SlideTitle>
+        <SlideContent>
+          <Resume src={resume} alt="Not found" />
+        </SlideContent>
       </Slide>
       <Slide>
-        <Title>About</Title>
-        <Description>
-          There are many variations of passages of Lorem Ipsum available, but
-          the majority have suffered alteration in some form, by injected
-          humour, or randomised words which don't look even slightly believable.
-          If you are going to use a passage of Lorem Ipsum, you need to be sure
-          there isn't anything embarrassing hidden in the middle of text. All
-          the Lorem Ipsum generators on the Internet tend to repeat predefined
-          chunks as necessary, making this the first true generator on the
-          Internet. It uses a dictionary of over 200 Latin words, combined with
-          a handful of model sentence structures, to generate Lorem Ipsum which
-          looks reasonable. The generated Lorem Ipsum is therefore always free
-          from repetition, injected humour, or non-characteristic words etc.
-        </Description>
+        <SlideTitle>About</SlideTitle>
+        <SlideContent>
+          <Description>About description</Description>
+        </SlideContent>
       </Slide>
       <Slide>
-        <Title>Contact</Title>
-        <ContactForm />
+        <SlideTitle>Contact</SlideTitle>
+        <SlideContent>
+          <ContactForm />
+        </SlideContent>
       </Slide>
     </Wrapper>
   );

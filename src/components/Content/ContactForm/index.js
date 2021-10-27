@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Recaptcha from "react-recaptcha";
 
-const nodemailer = require("nodemailer");
-
 const Wrapper = styled.form``;
 
 const FormItem = styled.div`
@@ -86,44 +84,44 @@ const ValidationIcon = styled.div`
   margin-left: 10px;
 `;
 
+const validateName = (name) => {
+  return name.length > 2;
+};
+
+const validateEmail = (email) => {
+  // source: https://www.w3resource.com/javascript/form/email-validation.php
+  return /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(.\w{2,3})+$/.test(email);
+};
+
+const validateMessage = (message) => {
+  return message.length > 2;
+};
+
 const ContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [verified, setVerified] = useState(false);
+  const [validName, setValidName] = useState(false);
   const [validEmail, setValidEmail] = useState(false);
   const [validMessage, setValidMessage] = useState(false);
-  const [validName, setValidName] = useState(false);
-
-  const validateName = () => {
-    return name.length > 2;
-  };
-
-  const validateEmail = () => {
-    // source: https://www.w3resource.com/javascript/form/email-validation.php
-    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
-  };
-
-  const validateMessage = () => {
-    return message.length > 2;
-  };
 
   useEffect(() => {
-    setValidName(validateName());
-    setValidEmail(validateEmail());
-    setValidMessage(validateMessage());
+    setValidName(validateName(name));
+    setValidEmail(validateEmail(email));
+    setValidMessage(validateMessage(message));
   }, [name, email, message]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (verified) {
       submit(event);
-      alert("Success");
+      alert("Message sent successfully");
       setName("");
-      setMessage("");
       setEmail("");
+      setMessage("");
     } else {
-      alert("Fail");
+      alert("Something went wrong");
     }
   };
 
@@ -132,7 +130,7 @@ const ContactForm = () => {
       <FormItem>
         <Label>
           Name <ValidationIcon hidden={!validName}>✅</ValidationIcon>
-          <ValidationIcon hidden={validName || name.length == 0}>
+          <ValidationIcon hidden={validName || name.length === 0}>
             ❌
           </ValidationIcon>
         </Label>
@@ -147,7 +145,7 @@ const ContactForm = () => {
       <FormItem>
         <Label>
           Email <ValidationIcon hidden={!validEmail}>✅</ValidationIcon>
-          <ValidationIcon hidden={validEmail || email.length == 0}>
+          <ValidationIcon hidden={validEmail || email.length === 0}>
             ❌
           </ValidationIcon>
         </Label>
@@ -163,7 +161,7 @@ const ContactForm = () => {
       <FormItem>
         <Label>
           Message <ValidationIcon hidden={!validMessage}>✅</ValidationIcon>
-          <ValidationIcon hidden={validMessage || message.length == 0}>
+          <ValidationIcon hidden={validMessage || message.length === 0}>
             ❌
           </ValidationIcon>
         </Label>

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-
+import "animate.css";
 import Fonts from "./fonts";
 
 const GlobalStyle = createGlobalStyle`
