@@ -1,15 +1,17 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import ContactForm from "./ContactForm";
 import Network from "../Network";
 import ProjectScene from "../ProjectScene";
 import Slide from "../Slide";
 import SlideContent from "../SlideContent";
 import SlideTitle from "../SlideTitle";
-import resume from "./../../assets/resume.png";
+import resume from "./../../assets/images/resume.png";
+import BrowserPopup from "../BrowserPopup";
 // import "animate.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { InView } from "react-intersection-observer";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -93,12 +95,12 @@ const Resume = styled.img`
 
 const Content = () => {
   useEffect(() => {
-    AOS.init({
-      duration: 2000,
-    });
+    AOS.init({});
   }, []);
+
   return (
     <Wrapper>
+      <BrowserPopup></BrowserPopup>
       <Category>
         <CategoryLine />
         Projects
@@ -106,21 +108,21 @@ const Content = () => {
       <Slide>
         <SlideContent>
           <Greetings
-            data-aos="zoom-in-right"
+            data-aos="zoom-in"
             data-aos-delay="1000"
             data-aos-duration="200"
           >
             Hi, my name is
           </Greetings>
           <Name
-            data-aos="zoom-in-right"
+            data-aos="zoom-in"
             data-aos-delay="1200"
             data-aos-duration="200"
           >
             Bernat Fogarasi.
           </Name>
           <Motto
-            data-aos="zoom-in-right"
+            data-aos="zoom-in"
             data-aos-delay="1300"
             data-aos-duration="200"
           >
@@ -133,9 +135,13 @@ const Content = () => {
       </Slide>
       <Slide>
         <SlideTitle>Network of skills</SlideTitle>
-        <SlideContent>
-          <Network />
-        </SlideContent>
+        <InView>
+          {({ inView, ref, entry }) => (
+            <SlideContent style={{ heigth: "100%" }} innerRef={ref}>
+              {inView && <Network />}
+            </SlideContent>
+          )}
+        </InView>
       </Slide>
       <Slide>
         <ProjectScene src="https://bernatfogarasi.github.io" />

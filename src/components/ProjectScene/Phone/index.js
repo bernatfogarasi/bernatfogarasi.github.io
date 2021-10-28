@@ -22,7 +22,7 @@ const PageIframe = styled.iframe`
   position: absolute;
   top: -195px;
   left: -260px;
-  background: red;
+  background-color: black;
   border: 1px solid black;
 `;
 

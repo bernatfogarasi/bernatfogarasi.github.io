@@ -12,6 +12,12 @@ const GlobalStyle = createGlobalStyle`
         scroll-snap-type: proximity;
         scroll-snap-points-y: repeat(100vh);
         scroll-snap-type: y proximity;
+        a {
+            text-decoration-thickness: 1px;
+            text-underline-offset: 5px;
+            color: black;
+            :hover{color: grey;}
+        }
     }
 `;
 

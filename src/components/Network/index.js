@@ -1,27 +1,27 @@
 import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import * as d3 from "d3";
-import api from "./../../assets/api-m-g.png";
-import bootstrap from "./../../assets/bootstrap-t-text2.png";
-import d3js from "./../../assets/d3-t-c.png";
-import materialui from "./../../assets/materialui-t-c.png";
-import mongodb from "./../../assets/mongodb-t-c.png";
-import moviepy from "./../../assets/moviepy-f.jpeg";
-import nltk from "./../../assets/nltk-c.png";
-import opencv from "./../../assets/opencv-t-c.png";
-import pandas from "./../../assets/pandas-c.png";
-import reactjs from "./../../assets/react-b.jpg";
-import threejs from "./../../assets/threejs-t-c.png";
-import selenium from "./../../assets/selenium-t-c.png";
-import sass from "./../../assets/sass-t-c.png";
-import tailwindcss from "./../../assets/tailwindcss-t-c.png";
-import ffmpeg from "./../../assets/ffmpeg-t-c.png";
-import django from "./../../assets/django-t-c2.png";
-import cpp from "./../../assets/cpp-t-f.png";
-import javascript from "./../../assets/javascript-c.png";
-import python from "./../../assets/python-t-b.png";
-import html from "./../../assets/html-t-text.png";
-import css from "./../../assets/css-t-text.png";
+import api from "./../../assets/icons/technologies/api-m-g.png";
+import bootstrap from "./../../assets/icons/technologies/bootstrap-t-text2.png";
+import d3js from "./../../assets/icons/technologies/d3-t-c.png";
+import materialui from "./../../assets/icons/technologies/materialui-t-c.png";
+import mongodb from "./../../assets/icons/technologies/mongodb-t-c.png";
+import moviepy from "./../../assets/icons/technologies/moviepy-f.jpeg";
+import nltk from "./../../assets/icons/technologies/nltk-c.png";
+import opencv from "./../../assets/icons/technologies/opencv-t-c.png";
+import pandas from "./../../assets/icons/technologies/pandas-c.png";
+import reactjs from "./../../assets/icons/technologies/react-b.jpg";
+import threejs from "./../../assets/icons/technologies/threejs-t-c.png";
+import selenium from "./../../assets/icons/technologies/selenium-t-c.png";
+import sass from "./../../assets/icons/technologies/sass-t-c.png";
+import tailwindcss from "./../../assets/icons/technologies/tailwindcss-t-c.png";
+import ffmpeg from "./../../assets/icons/technologies/ffmpeg-t-c.png";
+import django from "./../../assets/icons/technologies/django-t-c2.png";
+import cpp from "./../../assets/icons/languages/cpp-t-f.png";
+import javascript from "./../../assets/icons/languages/javascript-c.png";
+import python from "./../../assets/icons/languages/python-t-b.png";
+import html from "./../../assets/icons/languages/html-t-text.png";
+import css from "./../../assets/icons/languages/css-t-text.png";
 
 const nodeGroups = {
   projects: [
@@ -129,7 +129,6 @@ const createNodes = (nodeGroups) => {
       })
     )
     .flat(1);
-  // console.log(nodes);
   return nodes;
 };
 
@@ -141,7 +140,6 @@ const createLinks = (linkGroups) => {
       })
     )
     .flat(1);
-  // console.log(links);
   return links;
 };
 
@@ -166,7 +164,7 @@ const Network = () => {
         d3.forceLink(data.links).id((d) => d.id)
       )
 
-      .force("charge", d3.forceManyBody().strength(-500))
+      .force("charge", d3.forceManyBody().strength(-Math.random() * 2000))
       .force(
         "center",
         d3.forceCenter(
@@ -195,22 +193,21 @@ const Network = () => {
       .enter()
       .filter((d) => !d.icon)
       .append("rect")
-      .attr("width", (d) => d.name.length * 10 + 2)
-      .attr("height", nodeRectangleSettings.height + 2 + "px")
-      .attr("fill", "#ff6500")
+      .attr("width", (d) => d.name.length * 10 + 16)
+      .attr("height", nodeRectangleSettings.height + 8 + "px")
+      .attr("fill", "white")
       .attr("text-anchor", "middle")
       .style(
         "transform",
         (d) =>
           "translate(-" +
-          (d.name.length * 10 + 2) / 2 +
+          (d.name.length * 10 + 16) / 2 +
           "px, " +
-          nodeRectangleSettings.height / 2 +
+          (nodeRectangleSettings.height - 8) / 2 +
           "px)"
       )
       .style("stroke", "black")
       .style("stroke-width", "1px");
-
     // svg.call(
     //   d3
     //     .zoom()
@@ -234,8 +231,8 @@ const Network = () => {
     const nodeImage = node
       .enter()
       .append("image")
-      .attr("width", "50")
-      .attr("height", "50")
+      .attr("width", "40")
+      .attr("height", "40")
       .style("transform", "translate(-25px, 0px)")
       .attr("xlink:href", (d) => d.icon);
     // .style("filter", "grayscale(100%)");
@@ -298,7 +295,7 @@ const Network = () => {
       );
 
       selectedLines.transition().delay(100).style("stroke", "black");
-      selectedLines.transition().delay(2000).style("stroke", "white");
+      selectedLines.transition().delay(2000).style("stroke", "lightgrey");
 
       projectIndex += 1;
     }, 2000);

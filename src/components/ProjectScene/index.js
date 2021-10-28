@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const ProjectScene = ({ src }) => {
   return (
-    <Wrapper>
+    <Wrapper data-aos="fade-in" data-aos-delay="1000" data-aos-duration="400">
       <Canvas>
         <OrbitControls enableZoom={false} enablePan={false} />
         <Suspense fallback={null}>

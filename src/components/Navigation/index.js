@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Buttons from "./Buttons";
-import Logo from "./Logo";
+import Logo from "./Logo2";
 import Menu from "./Menu";
 
 const Wrapper = styled.div`

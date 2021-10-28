@@ -10,7 +10,15 @@ const Wrapper = styled.div`
 `;
 
 const SlideContent = (props) => {
-  return <Wrapper {...props}></Wrapper>;
+  return (
+    <Wrapper
+      data-aos="fade-in"
+      data-aos-delay="400"
+      data-aos-duration="200"
+      {...props}
+      ref={props.innerRef}
+    ></Wrapper>
+  );
 };
 
 export default SlideContent;

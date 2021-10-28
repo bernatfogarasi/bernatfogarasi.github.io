@@ -9,7 +9,11 @@ const Wrapper = styled.div`
 `;
 
 const SlideTitle = ({ children }) => {
-  return <Wrapper>{children}</Wrapper>;
+  return (
+    <Wrapper data-aos="zoom-in" data-aos-delay="200" data-aos-duration="200">
+      {children}
+    </Wrapper>
+  );
 };
 
 export default SlideTitle;
