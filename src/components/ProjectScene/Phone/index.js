@@ -8,12 +8,12 @@ title: Samsung Galaxy S21 Ultra
 
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
-// import { useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import styled from "styled-components";
-// import { a } from "@react-spring/three";
-// import { useSpring } from "@react-spring/core";
-// import { useEffect, useState } from "react";
+import { animated } from "@react-spring/three";
+import { useSpring } from "@react-spring/core";
+import { useEffect } from "react";
 
 const PageIframe = styled.iframe`
   width: 511px;
@@ -22,6 +22,8 @@ const PageIframe = styled.iframe`
   position: absolute;
   top: -195px;
   left: -260px;
+  padding: 0px;
+  margin: 0px;
   background-color: black;
   border: 1px solid black;
 `;
@@ -50,9 +52,17 @@ export default function Phone({ scale, position, rotation, src }) {
   // useFrame(() => {
   //   group.current.rotation.y += 0.01;
   // });
+  const spring = useSpring({
+    loop: true,
+    to: [{ rotation: [-Math.PI / 2, 0, 0] }, { rotation: [0, 0, 0] }],
+    from: { rotation: [0, 0, 0] },
+  });
+
+  // useEffect(() => (group.current.style = spring), []);
+
   return (
     <group ref={group} {...{ scale, position, rotation }} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
+      <animated.group style={spring} rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group>
             <group position={[-1.01, -0.44, 0]} scale={[-1, 1, 1]}>
@@ -291,7 +301,7 @@ export default function Phone({ scale, position, rotation, src }) {
             />
           </group>
         </group>
-      </group>
+      </animated.group>
     </group>
   );
 }

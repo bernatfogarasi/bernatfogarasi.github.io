@@ -75,6 +75,17 @@ const Description = styled.div`
   text-align: justify;
 `;
 
+const ProjectDescription = styled(Description)`
+  width: 50%;
+`;
+
+const Paragraph = styled.div`
+  margin: 20px 0;
+`;
+
+const List = styled.ul`
+  columns: 2;
+`;
 // const ProjectSceneLeft = styled(ProjectScene)``;
 
 // const ProjectSceneRight = styled(ProjectScene)``;
@@ -144,12 +155,20 @@ const Content = () => {
         </InView>
       </Slide>
       <Slide>
-        <ProjectScene src="https://bernatfogarasi.github.io" />
+        <ProjectScene side="right" src="https://bernatfogarasi.github.io" />
         <SlideTitle>AlgoVisualizer</SlideTitle>
         <SlideContent>
-          <Description>
-            An interesting way to study sorting and pathfinding algorithms.
-          </Description>
+          <ProjectDescription>
+            <Paragraph>
+              I have built a sorting and pathfinding visualizer website and
+              successfully implemented 30+ algorithms.
+            </Paragraph>
+            <Paragraph>
+              The visualizations are highly customizable. I also added controls
+              for the user i.e. pausing, playing backwards.
+            </Paragraph>
+            <Paragraph></Paragraph>
+          </ProjectDescription>
         </SlideContent>
       </Slide>
       <Slide>
@@ -161,7 +180,9 @@ const Content = () => {
       <Slide>
         <SlideTitle>About</SlideTitle>
         <SlideContent>
-          <Description>About description</Description>
+          <Description>
+            <Paragraph>About description</Paragraph>
+          </Description>
         </SlideContent>
       </Slide>
       <Slide>
