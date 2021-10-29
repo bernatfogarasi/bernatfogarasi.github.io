@@ -6,14 +6,13 @@ source: https://sketchfab.com/3d-models/samsung-galaxy-s21-ultra-cd962832be7744e
 title: Samsung Galaxy S21 Ultra
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { Html } from "@react-three/drei";
 import styled from "styled-components";
 import { animated } from "@react-spring/three";
 import { useSpring } from "@react-spring/core";
-import { useEffect } from "react";
 
 const PageIframe = styled.iframe`
   width: 511px;
@@ -49,13 +48,15 @@ const PageMesh = ({ src }) => {
 export default function Phone({ scale, position, rotation, src }) {
   const group = useRef();
   const { nodes, materials } = useGLTF("/scene.gltf");
+  const [animation, setAnimation] = useState();
+
   // useFrame(() => {
   //   group.current.rotation.y += 0.01;
   // });
+
   const spring = useSpring({
-    loop: true,
-    to: [{ rotation: [-Math.PI / 2, 0, 0] }, { rotation: [0, 0, 0] }],
-    from: { rotation: [0, 0, 0] },
+    spring: animation,
+    config: { mass: 5, tension: 400, friction: 80, precision: 0.001 },
   });
 
   // useEffect(() => (group.current.style = spring), []);
