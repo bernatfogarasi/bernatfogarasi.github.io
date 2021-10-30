@@ -83,7 +83,8 @@ const Popup = ({ children, initialShow }) => {
 
   useEffect(() => {
     document.addEventListener("keydown", pressedEscape, false);
-  }, []);
+    return () => document.removeEventListener("keydown", pressedEscape, false);
+  }, [pressedEscape]);
 
   return (
     <Wrapper hidden={!(initialShow && show)}>

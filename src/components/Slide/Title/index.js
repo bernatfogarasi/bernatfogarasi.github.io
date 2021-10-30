@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   font-size: 40px;
 `;
 
-const SlideTitle = ({ children }) => {
+const Title = ({ children }) => {
   return (
     <Wrapper data-aos="zoom-in" data-aos-delay="200" data-aos-duration="200">
       {children}
@@ -16,4 +16,4 @@ const SlideTitle = ({ children }) => {
   );
 };
 
-export default SlideTitle;
+export default Title;

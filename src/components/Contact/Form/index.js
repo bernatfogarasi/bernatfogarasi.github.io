@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Recaptcha from "react-recaptcha";
 
-const Wrapper = styled.form``;
+const Wrapper = styled.form`
+  margin-top: -20px;
+`;
 
 const FormItem = styled.div`
-  margin: 30px 0;
+  margin: 20px 0;
 `;
 
 const Label = styled.label`
@@ -97,7 +99,7 @@ const validateMessage = (message) => {
   return message.length > 2;
 };
 
-const ContactForm = () => {
+const Form = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -196,4 +198,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default Form;

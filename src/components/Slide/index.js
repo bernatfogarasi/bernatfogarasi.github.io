@@ -1,4 +1,7 @@
 import styled from "styled-components";
+import Title from "./Title";
+import Content from "./Content";
+import InView from "react-intersection-observer";
 
 // const SlideNextIconLine = styled.hr`
 //   width: 30px;
@@ -34,8 +37,21 @@ const Wrapper = styled.section`
   height: 100vh;
 `;
 
-const Slide = (props) => {
-  return <Wrapper {...props}></Wrapper>;
+const Slide = ({ children, empty, outer, title }) => {
+  return (
+    <Wrapper>
+      <InView>
+        {({ inView, ref }) => <div ref={ref}>{inView && outer}</div>}
+      </InView>
+
+      <Title>{title}</Title>
+      <InView>
+        {({ inView, ref }) => (
+          <Content innerRef={ref}>{inView && children}</Content>
+        )}
+      </InView>
+    </Wrapper>
+  );
 };
 
 export default Slide;

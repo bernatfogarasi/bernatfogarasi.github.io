@@ -9,16 +9,16 @@ const Wrapper = styled.div`
   left: 0;
 `;
 
-const SlideContent = (props) => {
+const Content = (props) => {
   return (
     <Wrapper
-      data-aos="fade-in"
-      data-aos-delay="400"
-      data-aos-duration="200"
-      {...props}
       ref={props.innerRef}
+      // data-aos="fade-in"
+      // data-aos-delay="400"
+      // data-aos-duration="200"
+      {...props}
     ></Wrapper>
   );
 };
 
-export default SlideContent;
+export default Content;

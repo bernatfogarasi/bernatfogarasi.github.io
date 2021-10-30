@@ -10,8 +10,6 @@ import opera from "./../../assets/icons/browsers/opera.png";
 import internetexplorer from "./../../assets/icons/browsers/internetexplorer.png";
 import microsoftedge from "./../../assets/icons/browsers/microsoftedge.png";
 
-const Wrapper = styled(Popup)``;
-
 const Browser = styled.a`
   display: flex;
   align-items: center;

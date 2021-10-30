@@ -1,10 +1,10 @@
-import { Canvas } from "@react-three/fiber";
 import styled from "styled-components";
+import { Canvas } from "@react-three/fiber";
 // import Cube from "./Cube";
 import Light from "./Light";
 import Phone from "./Phone";
 import { Suspense } from "react";
-import { OrbitControls } from "@react-three/drei";
+// import { OrbitControls } from "@react-three/drei";
 
 const Wrapper = styled.div`
   position: absolute;
@@ -13,11 +13,11 @@ const Wrapper = styled.div`
   height: 90%;
 `;
 
-const ProjectScene = ({ side, src }) => {
+const Scene = ({ side, src }) => {
   return (
-    <Wrapper data-aos="fade-in" data-aos-delay="1000" data-aos-duration="400">
+    <Wrapper>
       <Canvas>
-        <OrbitControls enableZoom={false} enablePan={false} />
+        {/* <OrbitControls enableZoom={false} enablePan={false} /> */}
         <Suspense fallback={null}>
           <Phone
             scale={0.8}
@@ -36,4 +36,4 @@ const ProjectScene = ({ side, src }) => {
   );
 };
 
-export default ProjectScene;
+export default Scene;
