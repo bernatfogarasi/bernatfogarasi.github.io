@@ -41,22 +41,24 @@ const SVG = styled.svg`
 const Network = () => {
   const ref = useRef();
 
-  const [x, setX] = useState(1);
-  const [y, setY] = useState(1);
-  const [z, setZ] = useState(1);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(0);
+  const [scale, setScale] = useState(1);
 
   useEffect(() => {
-    console.log([x, y, z]);
+    console.log([x, y, scale]);
 
     const svg = d3.select(ref.current);
 
     svg
       .selectAll("g")
       .transition()
-      .attr("transform", "translate(" + -x * 100 + ", " + y * 100 + ")")
-      .attr("transform", "scale(" + z + ")")
-      .transition();
-  }, [x, y, z]);
+      .style("transform-origin", "center")
+      .attr(
+        "transform",
+        "translate(" + -x * 80 + ", " + y * 80 + ")" + "scale(" + scale + ")"
+      );
+  }, [x, y, scale]);
 
   useEffect(() => {
     const data = {
@@ -204,22 +206,22 @@ const Network = () => {
       <Controls
         callback={(direction) => {
           if (direction === "up") {
-            setY((n) => Math.min(n + 1, 10));
+            setY((n) => Math.min(n + 1, 5));
           }
           if (direction === "down") {
-            setY((n) => Math.max(n - 1, 1));
+            setY((n) => Math.max(n - 1, -5));
           }
           if (direction === "right") {
-            setX((n) => Math.min(n + 1, 10));
+            setX((n) => Math.min(n + 1, 5));
           }
           if (direction === "left") {
-            setX((n) => Math.max(n - 1, 1));
+            setX((n) => Math.max(n - 1, -5));
           }
           if (direction === "in") {
-            setZ((n) => Math.min(n + 1, 10));
+            setScale((n) => Math.min(n * 1.2, 2));
           }
           if (direction === "out") {
-            setZ((n) => Math.max(n - 1, 1));
+            setScale((n) => Math.max(n / 1.2, 0.3));
           }
         }}
       />

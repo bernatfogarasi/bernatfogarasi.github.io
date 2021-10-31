@@ -4,7 +4,7 @@ import Slide from "../Slide";
 
 const Skills = () => {
   return (
-    <Slide title="My skills form a network">
+    <Slide title="Skills">
       <Network />
     </Slide>
   );

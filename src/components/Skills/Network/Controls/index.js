@@ -11,7 +11,7 @@ const ControlsWrapper = styled.div`
 
 const ZControls = styled(ControlsWrapper)`
   bottom: 0;
-  right: 0;
+  right: 102px;
   width: 50px;
   height: 100px;
 `;
@@ -32,7 +32,10 @@ const Arrow = styled.button`
   border: 0;
   background: transparent;
   :hover {
-    color: #ff6500;
+    color: lightgrey;
+  }
+  :active {
+    color: grey;
   }
 `;
 
@@ -60,26 +63,32 @@ const Left = styled(Arrow)`
   transform: translateY(-50%);
 `;
 
-const ZoomControl = styled.div`
-  cursor: pointer;
-  color: black;
-  padding: 2px;
-  font-size: 30px;
+const ZoomControl = styled.button`
+  position: absolute;
+  border: 0px;
+  width: 50px;
+  height: 50px;
+  font-size: 40px;
   font-family: SFMono;
-  display: flex;
-  justify-content: center;
-  align-items: space-between;
-  /* border: 0; */
   background: transparent;
+  color: black;
+  cursor: pointer;
   :hover {
-    color: #ff6500;
+    color: lightgrey;
   }
-  border: 1px solid;
 `;
 
-const In = styled(ZoomControl)``;
+const In = styled(ZoomControl)`
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
-const Out = styled(ZoomControl)``;
+const Out = styled(ZoomControl)`
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+`;
 
 const Controls = ({ callback }) => {
   return (
@@ -91,8 +100,8 @@ const Controls = ({ callback }) => {
         <Left onClick={() => callback("left")}>◄</Left>
       </XYControls>
       <ZControls>
-        <In>+</In>
-        <Out>-</Out>
+        <In onClick={() => callback("in")}>+</In>
+        <Out onClick={() => callback("out")}>-</Out>
       </ZControls>
     </Wrapper>
   );
