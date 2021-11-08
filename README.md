@@ -1,1 +1,1 @@
-Portfolio website - [bernatfogarasi.github.io](https://bernatfogarasi.github.io)
+Portfolio website - [bernatfogarasi.com](https://bernatfogarasi.com)
