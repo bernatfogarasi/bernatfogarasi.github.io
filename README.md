@@ -1,1 +1,3 @@
-Portfolio website - [bernatfogarasi.com](https://bernatfogarasi.com)
+# Deprecated
+
+Please go to my [current protfolio](https://github.com/bernatfogarasi/portfolio-v2).
